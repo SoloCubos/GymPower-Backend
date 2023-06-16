@@ -20,7 +20,7 @@ import com.gympower.web.services.impl.UserDetailsServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping()
+@RequestMapping(path = "/login")
 public class AuthController {
     @Autowired
 	private AuthenticationManager authenticationManager;
