@@ -1,11 +1,16 @@
 package com.gympower.web.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.envers.Audited;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -47,7 +52,16 @@ public class Cliente extends BaseEntity{
     @JoinColumn(name = "fk_instructor_id")
     private Instructor instructor;
 
-    @OneToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "fk_rutina_id")
-    private Rutina rutina;
+    @OneToMany(cascade = CascadeType.REFRESH, orphanRemoval = false)
+    @JoinTable(name = "cliente_rutina",
+            joinColumns = @JoinColumn(name = "cliente_id"),
+            inverseJoinColumns = @JoinColumn(name = "rutina_id"))
+    private List<Rutina> rutinas = new ArrayList<Rutina>();
+
+    @OneToMany(cascade = CascadeType.REFRESH, orphanRemoval = true)
+    @JoinTable(name = "usuario_rol",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private List<Rol> roles = new ArrayList<Rol>();
+
 }
