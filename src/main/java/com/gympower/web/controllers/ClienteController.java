@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gympower.web.DTO.LoginRequest;
+import com.gympower.web.DTO.JwtRequest;
 import com.gympower.web.entities.Cliente;
 import com.gympower.web.services.impl.ClienteServiceImpl;
 
@@ -24,7 +24,7 @@ public class ClienteController extends BaseControllerImpl<Cliente, ClienteServic
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> validarCredenciales(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<?> validarCredenciales(@RequestBody JwtRequest loginRequest){
         try {
 
             if(!(servicio.existsByCorreo(loginRequest.getCorreo()) && servicio.encontrarPassPorCorreo(loginRequest.getCorreo()).equals(loginRequest.getPassword()))){

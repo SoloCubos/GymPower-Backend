@@ -46,7 +46,7 @@ public class Cliente extends BaseEntity{
     private String correo;
 
     @Column(name = "password", length = 100)
-    private String contraseña;
+    private String password;
     
     @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_instructor_id")

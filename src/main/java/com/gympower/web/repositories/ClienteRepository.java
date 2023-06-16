@@ -14,5 +14,6 @@ public interface ClienteRepository extends BaseRepository<Cliente, Integer>{
     @Query(value = "SELECT password FROM cliente WHERE correo = :correo", nativeQuery = true)
     String encontrarPassPorCorreo(@Param("correo") String correo);
 
+    public Cliente findByCorreo(String correo);
 
 }

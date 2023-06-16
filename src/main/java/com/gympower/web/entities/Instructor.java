@@ -38,7 +38,7 @@ public class Instructor extends BaseEntity{
     private String correo;
 
     @Column(name = "password")
-    private String contraseña;
+    private String password;
 
 
 }
