@@ -20,7 +20,6 @@ import com.gympower.web.services.impl.UserDetailsServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/login")
 public class AuthController {
     @Autowired
 	private AuthenticationManager authenticationManager;
@@ -31,7 +30,7 @@ public class AuthController {
 	 @Autowired
 	    private JwtUtil jwtUtil;
 	 
-	 @PostMapping("/")
+	 @PostMapping("/api/gympower/login")
 	    public ResponseEntity<?> generarToken(@RequestBody JwtRequest jwtRequest) throws Exception {
 		 try {
 			 autenticar(jwtRequest.getCorreo(),jwtRequest.getPassword());
