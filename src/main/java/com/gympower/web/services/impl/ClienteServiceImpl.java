@@ -12,8 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
 public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Integer> implements ClienteService{
     
     @Autowired
@@ -26,6 +24,7 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Integer> implem
     @Override
     public Boolean existsByCorreo(String correo) throws Exception {
         try {
+            System.out.println(clienteRepository.existsByCorreo(correo));
             return clienteRepository.existsByCorreo(correo);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -33,9 +32,12 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Integer> implem
     }
 
     @Override
-    public String findPasswordByCorreo(String correo) throws Exception {
+    public String encontrarPassPorCorreo(String correo) throws Exception {
         try {
-            return clienteRepository.findPasswordByCorreo(correo);
+            
+            String contraseña = clienteRepository.encontrarPassPorCorreo(correo);
+            System.out.println(contraseña);
+            return contraseña;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

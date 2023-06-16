@@ -22,11 +22,12 @@ public class ClienteController extends BaseControllerImpl<Cliente, ClienteServic
     @Autowired
     private ClienteServiceImpl clienteServiceImpl;
 
+
     @PostMapping("/login")
     public ResponseEntity<?> validarCredenciales(@RequestBody LoginRequest loginRequest){
         try {
 
-            if(!(clienteServiceImpl.existsByCorreo(loginRequest.getCorreo()) && clienteServiceImpl.findPasswordByCorreo(loginRequest.getCorreo()).equals(loginRequest.getPassword()))){
+            if(!(servicio.existsByCorreo(loginRequest.getCorreo()) && servicio.encontrarPassPorCorreo(loginRequest.getCorreo()).equals(loginRequest.getPassword()))){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"error\":\"Error 69, Credenciales Incorrectas.\"}");
             }else{
                 return ResponseEntity.status(HttpStatus.OK).body("{\"succsess\":\"Ha iniciado sexión\"}");

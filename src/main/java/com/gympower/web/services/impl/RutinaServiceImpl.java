@@ -12,8 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
 public class RutinaServiceImpl extends BaseServiceImpl<Rutina, Integer> implements RutinaService{
 
     @Autowired

@@ -11,8 +11,8 @@ public interface ClienteRepository extends BaseRepository<Cliente, Integer>{
     
     Boolean existsByCorreo(String correo);
 
-    @Query("SELECT c.password FROM cliente c WHERE c.correo = :correo")
-    String findPasswordByCorreo(@Param("correo") String correo);
+    @Query(value = "SELECT password FROM cliente WHERE correo = :correo", nativeQuery = true)
+    String encontrarPassPorCorreo(@Param("correo") String correo);
 
 
 }

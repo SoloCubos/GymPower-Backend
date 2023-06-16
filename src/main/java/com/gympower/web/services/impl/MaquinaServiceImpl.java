@@ -12,8 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
 public class MaquinaServiceImpl extends BaseServiceImpl<Maquina, Integer> implements MaquinaService{
 
     @Autowired

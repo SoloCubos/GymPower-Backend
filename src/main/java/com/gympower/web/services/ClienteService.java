@@ -8,7 +8,7 @@ public interface ClienteService extends BaseService<Cliente, Integer>{
     
     Boolean existsByCorreo(String correo) throws Exception;
 
-    String findPasswordByCorreo(String correo) throws Exception;
+    String encontrarPassPorCorreo(String correo) throws Exception;
 
 
 }
