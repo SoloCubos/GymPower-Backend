@@ -24,7 +24,7 @@ public class ClienteController extends BaseControllerImpl<Cliente, ClienteServic
 
     //Login sin Seguridad xD
     @PostMapping("/login")
-    public ResponseEntity<?> validarCredenciales(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<?> validate(@RequestBody LoginRequest loginRequest){
         try {
 
             if(!(servicio.existsByCorreo(loginRequest.getCorreo()) && servicio.encontrarPassPorCorreo(loginRequest.getCorreo()).equals(loginRequest.getPassword()))){
