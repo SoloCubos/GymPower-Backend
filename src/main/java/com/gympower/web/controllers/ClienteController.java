@@ -22,7 +22,8 @@ public class ClienteController extends BaseControllerImpl<Cliente, ClienteServic
     @Autowired
     private ClienteServiceImpl clienteServiceImpl;
 
-
+    /**
+     * Login sin Seguridad xD
     @PostMapping("/login")
     public ResponseEntity<?> validarCredenciales(@RequestBody JwtRequest loginRequest){
         try {
@@ -37,5 +38,6 @@ public class ClienteController extends BaseControllerImpl<Cliente, ClienteServic
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error 69, Por favor intente mas tarde.\"}");
         }
     }
+    */
 
 }
