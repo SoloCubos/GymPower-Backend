@@ -23,4 +23,26 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Integer> implem
         super(baseRepository);
     }
 
+    @Override
+    public Boolean existsByCorreo(String correo) throws Exception {
+        try {
+            return clienteRepository.existsByCorreo(correo);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public String findPasswordByCorreo(String correo) throws Exception {
+        try {
+            return clienteRepository.findPasswordByCorreo(correo);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    
+
+    
+
 }
