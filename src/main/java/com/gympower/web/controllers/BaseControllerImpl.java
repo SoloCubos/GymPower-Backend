@@ -18,7 +18,7 @@ public abstract class BaseControllerImpl <E extends BaseEntity, S extends BaseSe
     @Autowired
     protected S servicio;
 
-    @GetMapping("/")
+    @GetMapping("/list")
     public ResponseEntity<?>getAll(){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.findAll());
@@ -36,7 +36,7 @@ public abstract class BaseControllerImpl <E extends BaseEntity, S extends BaseSe
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody E entity){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.save(entity));

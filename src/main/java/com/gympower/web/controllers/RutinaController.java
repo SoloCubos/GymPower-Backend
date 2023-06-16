@@ -10,7 +10,7 @@ import com.gympower.web.services.impl.RutinaServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/api/gympower/rutinas")
+@RequestMapping(path = "/rutinas")
 public class RutinaController extends BaseControllerImpl<Rutina, RutinaServiceImpl>{
 
     @Autowired

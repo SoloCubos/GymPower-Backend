@@ -10,7 +10,7 @@ import com.gympower.web.services.impl.MaquinaServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/api/gympower/maquinas")
+@RequestMapping(path = "/maquinas")
 public class MaquinaController extends BaseControllerImpl<Maquina, MaquinaServiceImpl>{
 
     @Autowired

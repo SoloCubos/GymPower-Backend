@@ -10,7 +10,7 @@ import com.gympower.web.services.impl.EjercicioServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/api/gympower/ejercicios")
+@RequestMapping(path = "/ejercicios")
 public class EjercicioController extends BaseControllerImpl<Ejercicio, EjercicioServiceImpl>{
 
     @Autowired

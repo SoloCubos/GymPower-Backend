@@ -16,7 +16,7 @@ import com.gympower.web.services.impl.ClienteServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/api/gympower/clientes")
+@RequestMapping(path = "/clientes")
 public class ClienteController extends BaseControllerImpl<Cliente, ClienteServiceImpl>{
  
     @Autowired
