@@ -58,10 +58,4 @@ public class Cliente extends BaseEntity{
             inverseJoinColumns = @JoinColumn(name = "rutina_id"))
     private List<Rutina> rutinas = new ArrayList<Rutina>();
 
-    @OneToMany(cascade = CascadeType.REFRESH, orphanRemoval = true)
-    @JoinTable(name = "usuario_rol",
-            joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private List<Rol> roles = new ArrayList<Rol>();
-
 }
