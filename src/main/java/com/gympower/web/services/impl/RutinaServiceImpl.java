@@ -8,8 +8,6 @@ import com.gympower.web.repositories.BaseRepository;
 import com.gympower.web.repositories.RutinaRepository;
 import com.gympower.web.services.RutinaService;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service
 public class RutinaServiceImpl extends BaseServiceImpl<Rutina, Integer> implements RutinaService{

@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gympower.web.DTO.LoginRequest;
-import com.gympower.web.entities.Cliente;
-import com.gympower.web.services.impl.ClienteServiceImpl;
+import com.gympower.web.entities.Usuario;
+import com.gympower.web.services.impl.UsuarioServiceImpl;
 
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/clientes")
-public class ClienteController extends BaseControllerImpl<Cliente, ClienteServiceImpl>{
+@RequestMapping(path = "/usuarios")
+public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl>{
  
     @Autowired
-    private ClienteServiceImpl clienteServiceImpl;
+    private UsuarioServiceImpl clienteServiceImpl;
 
     //Login sin Seguridad xD
     @PostMapping("/login")

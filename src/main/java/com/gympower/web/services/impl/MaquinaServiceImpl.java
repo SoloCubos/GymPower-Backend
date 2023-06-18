@@ -8,9 +8,6 @@ import com.gympower.web.repositories.BaseRepository;
 import com.gympower.web.repositories.MaquinaRepository;
 import com.gympower.web.services.MaquinaService;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 @Service
 public class MaquinaServiceImpl extends BaseServiceImpl<Maquina, Integer> implements MaquinaService{
 

@@ -5,15 +5,16 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gympower.web.entities.Instructor;
-import com.gympower.web.services.impl.InstructorServiceImpl;
+import com.gympower.web.entities.Rol;
+import com.gympower.web.services.impl.RolServiceImpl;
+
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "/instructores")
-public class InstructorController extends BaseControllerImpl<Instructor, InstructorServiceImpl>{
+public class RolController extends BaseControllerImpl<Rol, RolServiceImpl>{
 
     @Autowired
-    private InstructorServiceImpl instructorServiceImpl;
+    private RolServiceImpl rolServiceImpl;
     
 }

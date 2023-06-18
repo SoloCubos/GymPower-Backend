@@ -24,8 +24,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Audited
-@Table(name="cliente")
-public class Cliente extends BaseEntity{
+@Table(name="usuario")
+public class Usuario extends BaseEntity{
 
     @Column(name = "nombre", length = 20)
     private String nombre;
@@ -50,7 +50,7 @@ public class Cliente extends BaseEntity{
     
     @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_instructor_id")
-    private Instructor instructor;
+    private Usuario instructor;  
 
     @OneToMany(cascade = CascadeType.REFRESH, orphanRemoval = false)
     @JoinTable(name = "cliente_rutina",

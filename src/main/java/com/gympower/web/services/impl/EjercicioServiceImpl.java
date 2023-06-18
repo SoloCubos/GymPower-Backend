@@ -8,9 +8,6 @@ import com.gympower.web.repositories.BaseRepository;
 import com.gympower.web.repositories.EjercicioRepository;
 import com.gympower.web.services.EjercicioService;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 @Service
 public class EjercicioServiceImpl extends BaseServiceImpl<Ejercicio, Integer> implements EjercicioService{
     

@@ -2,9 +2,9 @@ package com.gympower.web.services;
 
 
 
-import com.gympower.web.entities.Cliente;
+import com.gympower.web.entities.Usuario;
 
-public interface ClienteService extends BaseService<Cliente, Integer>{
+public interface UsuarioService extends BaseService<Usuario, Integer>{
     
     Boolean existsByCorreo(String correo) throws Exception;
 

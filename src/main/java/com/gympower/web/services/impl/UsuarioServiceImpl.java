@@ -3,21 +3,18 @@ package com.gympower.web.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gympower.web.entities.Cliente;
+import com.gympower.web.entities.Usuario;
 import com.gympower.web.repositories.BaseRepository;
-import com.gympower.web.repositories.ClienteRepository;
-import com.gympower.web.services.ClienteService;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.gympower.web.repositories.UsuarioRepository;
+import com.gympower.web.services.UsuarioService;
 
 @Service
-public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Integer> implements ClienteService{
+public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implements UsuarioService{
     
     @Autowired
-    private ClienteRepository clienteRepository;
+    private UsuarioRepository clienteRepository;
 
-    public ClienteServiceImpl(BaseRepository<Cliente, Integer> baseRepository) {
+    public UsuarioServiceImpl(BaseRepository<Usuario, Integer> baseRepository) {
         super(baseRepository);
     }
 
