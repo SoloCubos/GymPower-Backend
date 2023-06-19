@@ -20,8 +20,8 @@ import com.gympower.web.services.impl.UsuarioServiceImpl;
 public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl>{
  
     @Autowired
-    private UsuarioServiceImpl clienteServiceImpl;
-
+    private UsuarioServiceImpl usuarioServiceImpl;
+    /*
     //Login sin Seguridad xD
     @PostMapping("/login")
     public ResponseEntity<?> validate(@RequestBody LoginRequest loginRequest){
@@ -37,4 +37,5 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error 69, Por favor intente mas tarde.\"}");
         }
     }
+    */
 }

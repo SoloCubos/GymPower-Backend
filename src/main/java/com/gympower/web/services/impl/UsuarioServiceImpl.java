@@ -17,7 +17,7 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
     public UsuarioServiceImpl(BaseRepository<Usuario, Integer> baseRepository) {
         super(baseRepository);
     }
-
+    /*
     @Override
     public Boolean existsByCorreo(String correo) throws Exception {
         try {
@@ -39,7 +39,7 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Integer> implem
             throw new Exception(e.getMessage());
         }
     }
-
+*/
     
 
     

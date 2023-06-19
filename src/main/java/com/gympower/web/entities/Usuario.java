@@ -1,15 +1,19 @@
 package com.gympower.web.entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.envers.Audited;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -36,8 +40,8 @@ public class Usuario extends BaseEntity{
     @Column(name = "genero", length = 20)
     private String genero;
 
-    @Column(name = "cedula", length = 10)
-    private String cedula;
+    @Column(name = "cedula")
+    private Integer cedula;
 
     @Column(name = "edad")
     private Byte edad;
@@ -58,4 +62,10 @@ public class Usuario extends BaseEntity{
             inverseJoinColumns = @JoinColumn(name = "rutina_id"))
     private List<Rutina> rutinas = new ArrayList<Rutina>();
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "rol_usuario",
+        joinColumns = @JoinColumn(name = "usuario_id"),
+        inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private Set<Rol> roles = new HashSet<>();
 }
+
