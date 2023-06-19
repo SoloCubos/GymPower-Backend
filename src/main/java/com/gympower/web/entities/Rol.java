@@ -2,8 +2,9 @@ package com.gympower.web.entities;
 
 import org.hibernate.envers.Audited;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,7 +12,7 @@ import jakarta.persistence.Table;
 @Table(name = "rol")
 public class Rol extends BaseEntity{
 
-    @Column(name = "nombre_rol", length = 20)
-    String nombre;
+    @Enumerated(EnumType.STRING)
+    private RolEnum nombre;
 
 }
