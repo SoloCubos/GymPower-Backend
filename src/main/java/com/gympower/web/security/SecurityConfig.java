@@ -1,32 +1,66 @@
 package com.gympower.web.security;
 
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-//import org.springframework.security.config.http.SessionCreationPolicy;
-//import org.springframework.security.core.session.SessionRegistry;
-//import org.springframework.security.core.session.SessionRegistryImpl;
-//import org.springframework.security.web.SecurityFilterChain;
-//import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-//@Configuration
-//@EnableWebSecurity
+@Configuration
+@EnableWebSecurity
 public class SecurityConfig {
-/*
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-                .authorizeHttpRequests()
-                .requestMatchers("/index").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin().permitAll()
-                .and()
-                .httpBasic() // Se usa cuando la seguridad no es muy importante
+                .csrf(config -> config.disable())
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("/index", "/register").permitAll();
+                    auth.anyRequest().authenticated();
+                })
+                .sessionManagement(session -> {
+                    session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                })
+                .httpBasic()
                 .and()
                 .build();
-    }*/
+    }
+    @Bean
+    public UserDetailsService userDetailsService(){
+
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(User.withUsername("Juan")
+                               .password("1234")
+                               .roles()
+                               .build());
+
+        return manager;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity httpSecurity, PasswordEncoder passwordEncoder) throws Exception{
+        return httpSecurity.getSharedObject(AuthenticationManagerBuilder.class)
+                           .userDetailsService(userDetailsService())
+                           .passwordEncoder(passwordEncoder)
+                           .and().build();
+    }
 
     /*@Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{

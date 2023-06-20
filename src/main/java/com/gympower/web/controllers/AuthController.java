@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +32,9 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*")
 //@RequestMapping(path = "/login")
 public class AuthController {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UsuarioServiceImpl usuarioServiceImpl;
@@ -66,7 +69,7 @@ public class AuthController {
                                .edad(crearUsuarioDTO.getEdad())
                                .username(crearUsuarioDTO.getUsername())
                                .correo(crearUsuarioDTO.getCorreo())
-                               .password(crearUsuarioDTO.getPassword())
+                               .password(passwordEncoder.encode(crearUsuarioDTO.getPassword()))
                                .roles(roles)
                                .build();
             
