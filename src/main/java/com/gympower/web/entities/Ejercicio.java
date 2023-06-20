@@ -32,7 +32,7 @@ public class Ejercicio extends BaseEntity{
     @Column(name = "descipcion", length = 2500)
     private String decripcion;
 
-    @OneToOne(cascade = CascadeType.REFRESH)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fk_maquina_id")
     private Maquina maquina;
 

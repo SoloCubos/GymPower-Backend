@@ -35,7 +35,7 @@ public class Rutina extends BaseEntity{
     @Column(name = "tiempo")
     private String tiempo;
 
-    @OneToMany(cascade = CascadeType.REFRESH, orphanRemoval = false)
+    @OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = false)
     @JoinTable(name = "rutina_ejercicio",
             joinColumns = @JoinColumn(name = "rutina_id"),
             inverseJoinColumns = @JoinColumn(name = "ejercicio_id"))

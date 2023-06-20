@@ -17,7 +17,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,44 +28,57 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Audited
 @Table(name="usuario")
 public class Usuario extends BaseEntity{
 
+    @NotBlank
     @Column(name = "nombre", length = 20)
     private String nombre;
 
+    @NotBlank
     @Column(name = "apellido", length = 20)
     private String apellido;
 
+    @NotBlank
     @Column(name = "genero", length = 20)
     private String genero;
 
+    @NotBlank
     @Column(name = "cedula")
     private Integer cedula;
 
+    @NotBlank
     @Column(name = "edad")
     private Byte edad;
 
+    @NotBlank
+    @Column(name = "username")
+    private String username;
+
+    @Email
+    @NotBlank
     @Column(name = "correo", length = 100)
     private String correo;
 
-    @Column(name = "password", length = 100)
+    @NotBlank
+    @Column(name = "password", length = 255)
     private String password;
     
-    @OneToOne(cascade = CascadeType.REFRESH)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fk_instructor_id")
     private Usuario instructor;  
 
-    @OneToMany(cascade = CascadeType.REFRESH, orphanRemoval = false)
+    @OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = false)
     @JoinTable(name = "cliente_rutina",
             joinColumns = @JoinColumn(name = "cliente_id"),
             inverseJoinColumns = @JoinColumn(name = "rutina_id"))
     private List<Rutina> rutinas = new ArrayList<Rutina>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, targetEntity = Rol.class)
     @JoinTable(name = "rol_usuario",
         joinColumns = @JoinColumn(name = "usuario_id"),
         inverseJoinColumns = @JoinColumn(name = "rol_id"))
