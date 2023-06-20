@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gympower.web.DTO.CrearUsuarioDTO;
-import com.gympower.web.DTO.LoginRequest;
-import com.gympower.web.DTO.LoginResponse;
 import com.gympower.web.entities.Rol;
 import com.gympower.web.entities.RolEnum;
 import com.gympower.web.entities.Usuario;
@@ -42,12 +40,12 @@ public class AuthController {
 
     @GetMapping("/index")
     public String index(){
-        return "Pene Enorme";
+        return "<public index>";
     }
 
     @GetMapping("/index2")
     public String index2(){
-        return "Pene Enano";
+        return "<private index>";
     }
 
     @PostMapping("/register")
@@ -78,32 +76,4 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error 69, Por favor intente mas tarde.\"}");
         }
     }
-    /*
-    @GetMapping("/session")
-    public ResponseEntity<?> getDetailsSession(){
-
-        String sessionId = "";
-        User userObjetct = null;
-
-        List<Object> sessions = sessionRegistry.getAllPrincipals();
-
-        for (Object session : sessions) {
-            if(session instanceof User){
-                userObjetct = (User) session;
-            }
-
-            List<SessionInformation> sessionInformations = sessionRegistry.getAllSessions(session, false);
-
-            for (SessionInformation sessionInformation : sessionInformations) {
-                sessionId = sessionInformation.getSessionId();
-            }
-        }
-
-        Map<String, Object> response = new HashMap<>();
-            response.put("response", "Ola Mundo");
-            response.put("sessionId", sessionId);
-            response.put("sessionUser", userObjetct);
-            
-        return ResponseEntity.ok(response);
-    }*/
 }

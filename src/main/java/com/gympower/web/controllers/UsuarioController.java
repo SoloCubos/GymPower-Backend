@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gympower.web.DTO.CrearUsuarioDTO;
-import com.gympower.web.DTO.LoginRequest;
 import com.gympower.web.entities.Usuario;
 import com.gympower.web.services.impl.UsuarioServiceImpl;
 
