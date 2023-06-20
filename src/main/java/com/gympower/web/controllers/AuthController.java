@@ -10,14 +10,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.session.SessionInformation;
-import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,8 +36,6 @@ public class AuthController {
     @Autowired
     private UsuarioServiceImpl usuarioServiceImpl;
 
-    @Autowired
-    private SessionRegistry sessionRegistry;
 
     @GetMapping("/index")
     public String index(){
@@ -59,11 +50,13 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> createUser(@Valid @RequestBody CrearUsuarioDTO crearUsuarioDTO){
         try {
-            Set<Rol> roles = crearUsuarioDTO.getRol().stream()
+            Set<Rol> roles = crearUsuarioDTO.getRoles().stream()
                          .map(role -> Rol.builder()
                                          .nombre(RolEnum.valueOf(role))
                                          .build())
                          .collect(Collectors.toSet());
+
+            System.out.println("Algun error creando el rol?");
 
             Usuario user =  Usuario.builder()
                                .nombre(crearUsuarioDTO.getNombre())
@@ -76,14 +69,13 @@ public class AuthController {
                                .password(crearUsuarioDTO.getPassword())
                                .roles(roles)
                                .build();
-
             
             return ResponseEntity.status(HttpStatus.OK).body(usuarioServiceImpl.save(user));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error 69, Por favor intente mas tarde.\"}");
         }
     }
-    
+    /*
     @GetMapping("/session")
     public ResponseEntity<?> getDetailsSession(){
 
@@ -110,5 +102,5 @@ public class AuthController {
             response.put("sessionUser", userObjetct);
             
         return ResponseEntity.ok(response);
-    }
+    }*/
 }

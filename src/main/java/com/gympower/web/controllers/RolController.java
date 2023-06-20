@@ -11,7 +11,7 @@ import com.gympower.web.services.impl.RolServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "/instructores")
+@RequestMapping(path = "/roles")
 public class RolController extends BaseControllerImpl<Rol, RolServiceImpl>{
 
     @Autowired

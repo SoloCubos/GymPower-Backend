@@ -19,6 +19,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,11 +48,11 @@ public class Usuario extends BaseEntity{
     @Column(name = "genero", length = 20)
     private String genero;
 
-    @NotBlank
+    @NotNull
     @Column(name = "cedula")
     private Integer cedula;
 
-    @NotBlank
+    @NotNull
     @Column(name = "edad")
     private Byte edad;
 
@@ -78,10 +79,10 @@ public class Usuario extends BaseEntity{
             inverseJoinColumns = @JoinColumn(name = "rutina_id"))
     private List<Rutina> rutinas = new ArrayList<Rutina>();
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, targetEntity = Rol.class)
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Rol.class, cascade = CascadeType.PERSIST)
     @JoinTable(name = "rol_usuario",
         joinColumns = @JoinColumn(name = "usuario_id"),
         inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private Set<Rol> roles = new HashSet<>();
+    private Set<Rol> roles;
 }
 
